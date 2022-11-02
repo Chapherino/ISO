@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "ls $(ls)"
-echo hola que tal
-echo `pwd` "<- esto fue pwd"
