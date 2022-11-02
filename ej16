@@ -1,0 +1,16 @@
+#!/bin/bash
+# Recibe un parametro (extension)
+
+if [ $# -ne 1 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+else
+	for USUARIOS in $(cat /etc/passwd | cut -d":" -f1)
+	do
+		var=$(find /home -user ${USUARIOS} -name "*${1}" | wc -l)
+		echo "$USUARIOS -|- $var " >> report.txt
+		echo "Creado"
+	done
+fi
+exit 0

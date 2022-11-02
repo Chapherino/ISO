@@ -1,0 +1,11 @@
+#!/bin/bash
+# No recibe parámetros
+
+if [ $# -ne 0 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+else
+	echo "$(ls)" | tr -d 'aA' | tr 'a-zA-Z' 'A-Za-z'
+fi
+exit 0

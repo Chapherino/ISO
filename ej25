@@ -1,0 +1,27 @@
+#!/bin/bash
+# Recibe 1 o 2 parametros
+
+if [ $# -eq 0 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+
+usuarios=( $(cat /etc/passwd | cut -d: -f1 ) )
+case $1 in
+	"-b")
+		if [ $2 -gt ${#usuarios[@]} ]
+		then
+			echo "Posición invalida"
+		else
+			echo ${usuarios[$2]}
+		fi
+	;;
+	"-l")
+		echo "Cantidad de usuarios: ${#usuarios[@]}"
+	;;
+	"-i")
+		echo "Usuarios: ${usuarios[@]}"
+	;;
+esac
+exit 0

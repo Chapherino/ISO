@@ -1,0 +1,57 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]
+then
+	echo CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA
+	exit 1
+fi
+
+pila=()
+
+push(){
+	pila[${#pila[*]}]=$1
+	return 0
+}
+
+length(){
+	echo "La cantidad de elementos en la pila actualmente es ${#pila[@]}"
+	return 0
+}
+
+pop(){
+	i=`echo $(expr ${#pila[@]} - 1)`
+	echo ${pila[$i]}
+	unset pila[i]
+	echo "Eliminacion exitosa"
+	return 0
+}
+
+print(){
+	echo "Se imprimirán todos los elementos del arreglo"
+	echo ${pila[@]}
+	return 0
+}
+
+select opcion in push length pop print salir
+do
+	case $opcion in
+		"push")
+			echo "Ingrese el numero a pushear"
+			read num
+			push $num
+			;;
+		"length")
+			length
+			;;
+		"pop")
+			pop
+			;;
+		"print")
+			print
+			;;
+		"salir")
+			exit 0
+			;;
+	esac
+done
+

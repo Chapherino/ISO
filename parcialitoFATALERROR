@@ -1,0 +1,22 @@
+#!/bin/bash
+# Recibe un path como parametro
+
+if [ $# -ne  1 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+
+loop=0
+while [ $loop -eq 0 ]
+do
+	error=$((cat /var/log/any-service/error.log | grep "FATAL ERROR:" | wc -l))
+	if [ $error -ne 0 ]
+	then
+		`tar -zcvf error.tar.gz /var/log/any-service`
+		`mv error.tar.gz $1`
+		echo $error
+		exit 0
+	fi
+	sleep 180
+done

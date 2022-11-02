@@ -1,0 +1,20 @@
+#!/bin/bash
+# comentario bla bla
+
+# echo "Introduzca su nombre y apellido:"
+# read nombre apellido
+echo "Fecha y hora actual:"
+date
+echo "Su apellido y nombre es:"
+echo "$apellido $nombre"
+echo "Su usuario es: `whoami`"
+echo "Su directorio actual es: `pwd`"
+# echo "Ingrese una descripcion suya"
+# read descripcion
+total="Soy $nombre $apellido y $descripcion"
+echo "$total."
+echo "Su directorio personal es: /home/`whoami`"
+echo "El contenido de su directorio personal es $(ls /home/`whoami`)"
+echo "Pesos 0: $0"
+echo "Pesos home: $HOME"
+echo "$HOME"

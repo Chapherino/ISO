@@ -1,0 +1,82 @@
+#!/bin/bash
+# No recibe parametros
+
+if [ $# -ne 0 ]
+then
+	echo CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA
+	exit 1
+fi
+
+inicializar(){
+	arreglo=()
+	echo Se inicializo el arreglo
+}
+
+agregar_elem(){
+	${arreglo[*]}=$1
+}
+
+eliminar_elem(){
+	if [ $1 -gt ${#arreglo[*]} ]
+	then
+		echo Direccion invalida
+	else
+		unset ${arreglo[$1]}
+	fi
+}
+
+longitud(){
+	echo "${#arreglo[*]}"
+}
+
+imprimir(){
+	echo "${arreglo[*]}"
+}
+
+inicializar_Con_Valores(){
+	if [ $# -ne 2 ]
+	then
+		echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+		exit 2
+	fi
+	for ((i=0; i<$1; i++))
+	do
+		arreglo[$i]=$2
+	done
+}
+
+select opcion in "Inicializar" "Inicializar Con Valores" "Agregar" "Eliminar" "Longitud" "Imprimir" "Salir"
+do
+	case $opcion in 
+		"Inicializar")
+			inicializar
+			;;
+		"Inicializar Con Valores")
+			echo "Ingrese la longitud y el valor a insertar"
+			read lon 
+			read val
+			inicializar_Con_Valores $lon $val
+			;;
+		"Agregar")
+			echo "Ingrese el valor a agregar"
+			read elem
+			agregar_elem elem
+			;;
+		"Eliminar")
+			echo "Ingrese la posicion a eliminar"
+			read num
+			eliminar_elem num
+			;;
+		"Longitud")
+			longitud
+			;;
+		"Imprimir")
+			imprimir
+			;;
+		"Salir")
+			exit 0
+			;;
+	esac
+done
+
+

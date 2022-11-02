@@ -1,0 +1,21 @@
+#!/bin/bash
+# No recibe parametros
+
+if [ $# -ne 0 ]
+then
+	echo CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA
+	exit 1
+fi
+
+vector1=(1 2 3 4 5)
+vector2=(5 3 4 2 10)
+
+cantMax=${#vector1[@]}
+
+
+for ((i=0; i<$cantMax; i++))
+do
+	n=`expr ${vector1[$i]} + ${vector2[$i]}`
+	echo "La suma de los elementos de la posicion $i de los vectores es $n"
+done
+exit 0

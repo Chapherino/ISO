@@ -1,0 +1,17 @@
+#!/bin/bash
+# Recibe un archivo como parametro
+
+if [ $# -ne 1 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+elif [ -d $1 ]
+then
+	echo "$1 es un directorio"
+elif [ -f $1 ]
+then
+	echo "$1 es un archivo"
+else
+	echo "$1 no existe, se creará un directorio"
+	mkdir $1
+	echo "Directorio $1 creado"
+fi

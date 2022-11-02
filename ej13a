@@ -1,0 +1,14 @@
+#!/bin/bash
+#No recibe parametros
+
+if [ $# -ne 0 ]
+then
+	echo CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA
+	exit 1
+fi
+
+for ((i=0; i<101; i++))
+do
+	echo "Numero: $i" "Cuadrado: $(expr $i \* $i)"
+done
+exit 0

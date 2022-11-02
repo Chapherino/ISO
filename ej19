@@ -1,0 +1,20 @@
+#!/bin/bash
+# No recibe parametros
+
+if [ $# -ne 0 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+select opcion in $(ls /home/iso/practica-shell-scriptsISO) Salir
+do
+	echo Ingrese la opcion a ejecutar
+	case $opcion in
+		"Salir")
+			exit 0
+			;;
+		*)
+			bash $opcion
+	esac
+done
+exit 0

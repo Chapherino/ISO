@@ -1,0 +1,19 @@
+#!/bin/bash
+# Recibe el nombre de un directorio como parametro
+
+if [ $# -ne 1 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+
+if [ -e $1 ]
+then
+	cantLectura=$(ls -l | cut --bytes=2,3,4 | grep r | wc -l)
+	cantEscritura=$(ls -l | cut --bytes=2,3,4 | grep w | wc -l)
+	echo "Cantidad de archivos con permiso de lectura: $cantLectura"
+	echo "Cantidad de archivos con permiso de escritura: $cantEscritura"
+else
+	echo "El directorio no existe"
+	exit 4
+fi

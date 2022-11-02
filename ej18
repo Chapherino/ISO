@@ -1,0 +1,22 @@
+#!/bin/bash
+# Recibe un parametro: un nombre de usuario
+
+if [ $# -ne 1 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+else
+	encontre=0
+	while [ $encontre -eq 0 ]
+	do
+		cant=`users | grep $1 | wc -l`
+		if [ $cant != 0 ]
+		then
+			echo "Usuario $1 logueado en el sistema"
+			encontre="true"
+			exit 0
+		fi
+		echo "No se encontró, se retomará la busqueda en 10 segundos"
+		sleep 10
+	done
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+arreglo=()
+echo "Cant: ${#arreglo[@]} Elem: ${arreglo[@]}"
+arreglo=$((ls))
+echo "Cant: ${#arreglo[@]} Elem: ${arreglo[@]}"
+arreglo=( $(cut /etc/passwd -d: -f1) )
+echo "Cant: ${#arreglo[@]} Elem: ${arreglo[@]}"
+exit 0

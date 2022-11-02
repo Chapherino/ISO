@@ -1,0 +1,22 @@
+#!/bin/bash
+# Recibe 3 parametros: num1 op num2
+
+
+if [ $# -ne 3 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+else
+	case $2 in
+	"+")
+		echo $(expr $1 + $3)
+		;;
+	"-")
+		echo $(expr $1 - $3)
+		;;
+	"*")
+		echo $(expr $1 \* $3)
+		;;
+	"%")	
+		echo $(expr $1 / $3)
+	esac
+fi

@@ -1,0 +1,31 @@
+#!/bin/bash
+# No se reciben parametros
+
+if [ $# -ne 0 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+
+loop=1
+cant=0
+while [ $loop -eq 1 ]
+do
+	esta=`ps | grep apache | wc -l`
+
+	if [ $esta -eq 1 ]
+	then
+		echo "Se encontró el proceso apache"
+		cant=$(($cant + 1))
+	else
+		echo "No se encontró el proceso apache"
+	fi
+
+	if [ $cant -eq 10 ]
+	then
+		echo "Se verificó 10 veces la ejecucion del proceso apache. Finalizara la ejecucion del script"
+		exit 50
+	fi
+
+	sleep 5
+done

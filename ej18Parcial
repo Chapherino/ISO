@@ -1,0 +1,58 @@
+#!/bin/bash
+
+if [ $# -ne 0 ]
+then
+	echo "CANTIDAD DE PARAMETROS RECIBIDOS INCORRECTA"
+	exit 1
+fi
+arreglo=( $(find /var/log -name "access") )
+
+cantidad(){
+	echo "${#arreglo[@]}"
+}
+
+listar(){
+	echo "${arreglo[@]}"
+}
+
+eliminar(){
+	if [ $# -ne 2 ]
+	then
+		echo "CANTIDAD DE PARAMETROS RECIBIDOS POR LA FUNCION INCORRECTA"
+		exit 2
+	fi
+	if [ $2 -eq "l" ]
+	then
+		unset arreglo[$1]
+	elif
+		[ $2 -eq "f" ]
+	then
+		arc=${arreglo[$1]}
+		unset arreglo[$1]
+		rm /var/log/$arc
+	else
+		echo "PARAMETROS RECIBIDOS INCORRECTOS"
+		exit 3
+	fi
+}
+
+select opcion in "Cantidad" "Listar" "Eliminar" "Salir"
+do
+	case $opcion in
+		"Cantidad")
+			cantidad
+			;;
+		"Listar")
+			listar
+			;;
+		"Eliminar")
+			echo "Ingrese un numero y un caracter (l o f)"
+			read num car
+			eliminar num car
+			;;
+		"Salir")
+			exit 0
+	esac
+done
+
+

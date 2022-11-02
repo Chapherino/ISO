@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Ingrese que opción quiere: Listar, DondeEstoy, QuienEsta"
+read opcion
+case $opcion in
+	"Listar")
+		echo `ls`
+		;;
+	"DondeEstoy")
+		echo `pwd`
+		;;
+	"QuienEsta")
+		echo `users`
+		;;
+esac
