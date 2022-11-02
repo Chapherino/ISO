@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cant=0
-while [ $cant -lt 10 ]
-do
-	echo $cant
-	cant=$(($cant + 1))
-done
